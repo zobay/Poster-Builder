@@ -2,33 +2,25 @@ const data = {
     value: ''
 };
 
-const el = document.getElementById('inputEl');
+const heading = document.getElementById('heading');
+const description = document.getElementById('description');
 
-Object.defineProperty(data, 'prop', {
-    get: function () {
-        console.log('Getter called');
-        return this.value;
-    },
-    set: function (value) {
-        console.log('Setter called');
-        this.value = value;
-        el.value = value;
-        printVal();
-    }
-});
-
-
-// attaching the event listener on keyup events
-el.addEventListener('keyup', (event) => {
-    data.prop = event.target.value;
-});
-
-function printVal() {
+const printHeading = () => {
     const el = document.getElementById('val');
     el.innerText = data.prop;
-}
+};
 
-const btn = document.getElementById('incrementVal');
-btn.addEventListener('click', () => {
-    data.prop = Number(data.prop) + 1;
+const printDescription = () => {
+    const el = document.getElementById('description_value');
+    el.innerText = data.prop;
+};
+
+heading.addEventListener('keyup', () => {
+    data.prop = heading.value;
+    printHeading();
+});
+
+description.addEventListener('keyup', () => {
+    data.prop = description.value;
+    printDescription();
 });
